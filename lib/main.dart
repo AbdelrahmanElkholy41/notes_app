@@ -7,6 +7,7 @@ class NotesAPP extends StatelessWidget {
   const NotesAPP({super.key});
 
   @override
+
   Widget build(BuildContext context) {
     return const Placeholder();
   }
