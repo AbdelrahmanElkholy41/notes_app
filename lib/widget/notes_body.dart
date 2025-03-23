@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'cardNote.dart';
 import 'customAppBar.dart';
 
 class NotesBody extends StatelessWidget {
@@ -7,11 +8,17 @@ class NotesBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
-      children: const[
-        SizedBox(height: 60,),
-        Customappbar()
+    return Column(
+      children: [
+        SizedBox(
+          height: 60,
+        ),
+        Customappbar(),
+
+
+        cardNote(),
       ],
     );
   }
 }
+
