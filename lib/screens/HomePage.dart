@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/widget/customTextfield.dart';
 import 'package:notes_app/widget/notes_body.dart';
 
+import '../widget/contentButtonSheet.dart';
+
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
 
@@ -15,6 +17,7 @@ class Homepage extends StatelessWidget {
             context: context,
             builder: (context){
           return contentButtonSheet();
+
 
 
 
