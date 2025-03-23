@@ -16,7 +16,20 @@ class NotesBody extends StatelessWidget {
         Customappbar(),
 
 
-        cardNote(),
+        Expanded(
+          child: ListView.builder(
+            itemBuilder: (BuildContext context, int index)
+          {
+          
+            return Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: cardNote(),
+            );
+
+          },
+
+          ),
+        )
       ],
     );
   }
