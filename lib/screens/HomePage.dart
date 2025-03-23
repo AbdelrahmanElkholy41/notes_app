@@ -7,9 +7,8 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-
-
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: () {},child: Icon(Icons.add),),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: NotesBody(),
