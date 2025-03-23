@@ -14,17 +14,7 @@ class Homepage extends StatelessWidget {
 
             context: context,
             builder: (context){
-          return Column(
-              children: [
-                SizedBox(height: 50,),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-
-                  child: Customtextfield(hintText: 'Title'),
-
-                )
-              ],
-            );
+          return contentButtonSheet();
 
 
 
@@ -39,3 +29,5 @@ class Homepage extends StatelessWidget {
     );
   }
 }
+
+
