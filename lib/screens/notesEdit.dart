@@ -7,23 +7,31 @@ class Notesedit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-
-      body:Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: Column(
-          children: [
-            SizedBox(height: 50,),
-            Customappbar(text: 'Edit Note', icon: Icons.check,),
-            SizedBox(height: 50,),
-
-            Customtextfield(hintText: 'Title'),
-
-        SizedBox(height: 30,),
-            Customtextfield(hintText: 'Content',maxline: 5,)
-          ],
-        ),
-      )
-    );
+    return Scaffold(
+        body: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 50,
+          ),
+          Customappbar(
+            text: 'Edit Note',
+            icon: Icons.check,
+          ),
+          SizedBox(
+            height: 50,
+          ),
+          Customtextfield(hintText: 'Title'),
+          SizedBox(
+            height: 30,
+          ),
+          Customtextfield(
+            hintText: 'Content',
+            maxline: 5,
+          )
+        ],
+      ),
+    ));
   }
 }
