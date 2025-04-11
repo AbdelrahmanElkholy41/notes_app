@@ -12,19 +12,14 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-        showModalBottomSheet(
-
-            context: context,
-            builder: (context){
-          return contentButtonSheet();
-
-
-
-
-        }
-        );
-      },
-        child: Icon(Icons.add),),
+          showModalBottomSheet(
+              context: context,
+              builder: (context) {
+                return contentButtonSheet();
+              });
+        },
+        child: Icon(Icons.add),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: NotesBody(),
@@ -32,5 +27,3 @@ class Homepage extends StatelessWidget {
     );
   }
 }
-
-
