@@ -12,19 +12,19 @@ class cardNote extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Notesedit()),
+          MaterialPageRoute(builder: (context) => const Notesedit()),
         );
       },
       child: Container(
         padding: const EdgeInsets.only(top: 24,bottom: 24,left: 16),
         decoration: BoxDecoration(
-            color: Color(0xffFFCC80),
+            color: const Color(0xffFFCC80),
             borderRadius: BorderRadius.circular(16)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title: Text(
+              title: const Text(
                 'Flutter tips',
                 style: TextStyle(fontSize: 30, color: Colors.black),
               ),
@@ -39,7 +39,7 @@ class cardNote extends StatelessWidget {
               ),
               trailing: IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.delete),
+                icon: const Icon(Icons.delete),
                 color: Colors.black,
                 iconSize: 30,
               ),

@@ -12,18 +12,18 @@ class Notesedit extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
-          Customappbar(
+          const Customappbar(
             text: 'Edit Note',
             icon: Icons.check,
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           Customtextfield(hintText: 'Title'),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Customtextfield(
