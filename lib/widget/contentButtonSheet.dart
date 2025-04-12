@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/cubits/Add_notes_cubit.dart';
 import 'package:notes_app/modal/NoteModal.dart';
 
-import 'Custombutton.dart';
-import 'customTextfield.dart';
+import 'CustomButton.dart';
+import 'customTextField.dart';
 
 class contentButtonSheet extends StatefulWidget {
   const contentButtonSheet({
@@ -23,6 +22,7 @@ class _ContentButtonSheetState extends State<contentButtonSheet> {
 
   String? title;
   String? con;
+   bool isloading=false;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -39,8 +39,8 @@ class _ContentButtonSheetState extends State<contentButtonSheet> {
               }
             },
             builder: (BuildContext context, state) {
-              return ModalProgressHUD(
-                inAsyncCall: state is AddNoteLoading ? true : false,
+              return AbsorbPointer(
+                absorbing: state is AddNoteLoading ? true :false,
                 child: SingleChildScrollView(
                   child: Form(
                     key: formKey,
@@ -68,23 +68,29 @@ class _ContentButtonSheetState extends State<contentButtonSheet> {
                         const SizedBox(
                           height: 50,
                         ),
-                        Custombutton(
-                          action: 'Add',
-                          onTap: () {
-                            if (formKey.currentState!.validate()) {
-                              formKey.currentState!.save();
+                        BlocBuilder<AddNoteCubit,AddNoteState>(
+                          builder: ( context,  state) {
+                            return   CustomButton(
+                              isloading:state is AddNoteLoading ? true :false ,
+                              action: 'Add',
+                              onTap: () {
+                                if (formKey.currentState!.validate()) {
+                                  formKey.currentState!.save();
 
-                              var noteModel = NoteModal(
-                                  title: title!,
-                                  subtitle: con!,
-                                  color: Colors.blue.value,
-                                  date: DateTime.now().toString());
-                              BlocProvider.of<AddNoteCubit>(context)
-                                  .AddNote(noteModel);
-                            } else {
-                              autovalidateMode = AutovalidateMode.always;
-                            }
+                                  var noteModel = NoteModal(
+                                      title: title!,
+                                      subtitle: con!,
+                                      color: Colors.blue.value,
+                                      date: DateTime.now().toString());
+                                  BlocProvider.of<AddNoteCubit>(context)
+                                      .AddNote(noteModel);
+                                } else {
+                                  autovalidateMode = AutovalidateMode.always;
+                                }
+                              },
+                            );
                           },
+
                         ),
                         const SizedBox(
                           height: 10,

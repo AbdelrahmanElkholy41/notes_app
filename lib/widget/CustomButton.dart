@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-class Custombutton extends StatelessWidget {
-  Custombutton({super.key, required this.action, required this.onTap});
+class CustomButton extends StatelessWidget {
+  CustomButton( {super.key, required this.action, required this.onTap,this. isloading=false });
   final String action;
   final VoidCallback onTap;
+ bool  isloading;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +16,9 @@ class Custombutton extends StatelessWidget {
         decoration: BoxDecoration(
             color: Colors.blue, borderRadius: BorderRadius.circular(8)),
         child: Center(
-            child: Text(
+            child: isloading? const CircularProgressIndicator(): Text(
           action,
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
         )),
       ),
