@@ -11,11 +11,11 @@ import 'modal/NoteModal.dart';
 void main() async {
   await Hive.initFlutter();
   Bloc.observer=SimpleBlocObserver();
-
+  Hive.registerAdapter(NoteModalAdapter());
   await Hive.openBox<NoteModal>('notes_box');
 
 
-  Hive.registerAdapter(NoteModalAdapter());
+
   runApp(const NotesAPP());
 }
 
@@ -24,18 +24,13 @@ class NotesAPP extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => AddNoteCubit()),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          brightness: Brightness.dark,
-          //scaffoldBackgroundColor: Colors.
-        ),
-        home: Homepage(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        //scaffoldBackgroundColor: Colors.
       ),
+      home: Homepage(),
     );
   }
 }
