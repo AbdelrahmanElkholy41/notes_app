@@ -15,13 +15,13 @@ class Homepage extends StatelessWidget {
           showModalBottomSheet(
               context: context,
               builder: (context) {
-                return contentButtonSheet();
+                return const contentButtonSheet();
               });
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15),
         child: NotesBody(),
       ),
     );
