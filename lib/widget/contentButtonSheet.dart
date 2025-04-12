@@ -27,20 +27,20 @@ class _ContentButtonSheetState extends State<contentButtonSheet> {
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) => AddNoteCubit(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: BlocConsumer<AddNoteCubit, AddNoteState>(
-            listener: (BuildContext context, state) {
-              if (state is AddNoteFailure) {
-                print('failed ${state.errMessage}  ');
-              }
-              if (state is AddNoteSuccess) {
-                Navigator.pop(context);
-              }
-            },
-            builder: (BuildContext context, state) {
-              return AbsorbPointer(
-                absorbing: state is AddNoteLoading ? true :false,
+        child: BlocConsumer<AddNoteCubit, AddNoteState>(
+          listener: (BuildContext context, state) {
+            if (state is AddNoteFailure) {
+              print('failed ${state.errMessage}  ');
+            }
+            if (state is AddNoteSuccess) {
+              Navigator.pop(context);
+            }
+          },
+          builder: (BuildContext context, state) {
+            return AbsorbPointer(
+              absorbing: state is AddNoteLoading ? true :false,
+              child: Padding(
+                padding:  EdgeInsets.only(left: 8.0,right:8,bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: SingleChildScrollView(
                   child: Form(
                     key: formKey,
@@ -99,9 +99,9 @@ class _ContentButtonSheetState extends State<contentButtonSheet> {
                     ),
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ));
   }
 }
