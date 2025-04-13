@@ -16,40 +16,36 @@ class NotesBody extends StatefulWidget {
 
 class _NotesBodyState extends State<NotesBody> {
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    BlocProvider.of<NotesCubit>(context).getNote();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NotesCubit,NotesState>(
+    return BlocBuilder<NotesCubit, NotesState>(
       builder: (BuildContext context, state) {
-        List<NoteModal>notes=BlocProvider.of<NotesCubit>(context).notes?? [];
-        return   Column(
+        List<NoteModal> notes = BlocProvider.of<NotesCubit>(context).notes ?? [];
+
+        return Column(
           children: [
-            const SizedBox(
-              height: 60,
-            ),
-            const Customappbar(text: 'Notes', icon: Icons.search,),
-
-
+            const SizedBox(height: 60),
+            const Customappbar(text: 'Notes', icon: Icons.search),
             Expanded(
               child: ListView.builder(
-             itemCount: notes.length,
-
-                itemBuilder: (BuildContext context, int index)
-                {
-
+                itemCount: notes.length,
+                itemBuilder: (BuildContext context, int index) {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
-
-                    child: cardNote(notes: notes[index],),
+                    child: cardNote(notes: notes[index]),
                   );
-
                 },
-
               ),
             )
           ],
         );
       },
-
     );
   }
 }
-
