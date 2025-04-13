@@ -6,6 +6,7 @@ import 'package:notes_app/modal/NoteModal.dart';
 import 'package:intl/intl.dart';
 
 import '../cubits/notesCubit.dart';
+import 'ColoresListView.dart';
 import 'CustomButton.dart';
 import 'customTextField.dart';
 
@@ -75,6 +76,10 @@ class _ContentButtonSheetState extends State<contentButtonSheet> {
                         const SizedBox(
                           height: 50,
                         ),
+                        const ColorListView(),
+                        const SizedBox(
+                          height: 20,
+                        ),
                         BlocBuilder<AddNoteCubit, AddNoteState>(
                           builder: (context, state) {
                             return CustomButton(
@@ -109,5 +114,17 @@ class _ContentButtonSheetState extends State<contentButtonSheet> {
             );
           },
         ));
+  }
+}
+
+class ColorItem extends StatelessWidget {
+  const ColorItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const CircleAvatar(
+      backgroundColor: Colors.blue,
+      radius: 30,
+    );
   }
 }
