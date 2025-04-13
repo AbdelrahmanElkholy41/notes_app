@@ -16,7 +16,7 @@ final NoteModal notes;
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const Notesedit()),
+          MaterialPageRoute(builder: (context) => Notesedit(note: notes,)),
         );
       },
       child: Container(
@@ -43,6 +43,7 @@ final NoteModal notes;
               trailing: IconButton(
                 onPressed: () {
                   notes.delete();
+
                   BlocProvider.of<NotesCubit>(context).getNote();
                 },
                 icon: const Icon(Icons.delete),

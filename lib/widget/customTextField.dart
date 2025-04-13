@@ -2,13 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class Customtextfield extends StatelessWidget {
 
-  Customtextfield({super.key, required this.hintText,this.onChange,  this.obsec=false,  this.maxline=1, this.onSaved});
+  Customtextfield({super.key, required this.hintText,  this.obsec=false,  this.maxline=1, this.onSaved, this.onChanged});
 
 
   final String hintText;
   final int maxline;
   final bool? obsec;
-  Function (String)? onChange;
+  final void Function(String)? onChanged;
+
 
 final void Function(String?)? onSaved;
 
@@ -16,6 +17,7 @@ final void Function(String?)? onSaved;
   Widget build(BuildContext context) {
     return  TextFormField(
       onSaved: onSaved,
+
       validator: (value) {
         if(value?.isEmpty ?? true){
           return 'Field is required';
@@ -30,7 +32,7 @@ final void Function(String?)? onSaved;
       //     return 'data is require ';
       //   }
       //},
-      onChanged:onChange,
+      onChanged:onChanged,
       decoration: InputDecoration(
           enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.white)
