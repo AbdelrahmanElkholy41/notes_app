@@ -11,24 +11,21 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => NotesCubit(),
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            showModalBottomSheet(
-                isScrollControlled: true,
-                context: context,
-                builder: (context) {
-                  return const contentButtonSheet();
-                });
-          },
-          child: const Icon(Icons.add),
-        ),
-        body: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          child: NotesBody(),
-        ),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+              isScrollControlled: true,
+              context: context,
+              builder: (context) {
+                return const contentButtonSheet();
+              });
+        },
+        child: const Icon(Icons.add),
+      ),
+      body: const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 15),
+        child: NotesBody(),
       ),
     );
   }

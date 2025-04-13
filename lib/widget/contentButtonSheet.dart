@@ -5,6 +5,7 @@ import 'package:notes_app/cubits/Add_notes_cubit.dart';
 import 'package:notes_app/modal/NoteModal.dart';
 import 'package:intl/intl.dart';
 
+import '../cubits/notesCubit.dart';
 import 'CustomButton.dart';
 import 'customTextField.dart';
 
@@ -23,7 +24,7 @@ class _ContentButtonSheetState extends State<contentButtonSheet> {
 
   String? title;
   String? con;
-   bool isloading=false;
+  bool isloading = false;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -34,14 +35,19 @@ class _ContentButtonSheetState extends State<contentButtonSheet> {
               print('failed ${state.errMessage}  ');
             }
             if (state is AddNoteSuccess) {
+              BlocProvider.of<NotesCubit>(context).getNote();
+
               Navigator.pop(context);
             }
           },
           builder: (BuildContext context, state) {
             return AbsorbPointer(
-              absorbing: state is AddNoteLoading ? true :false,
+              absorbing: state is AddNoteLoading ? true : false,
               child: Padding(
-                padding:  EdgeInsets.only(left: 8.0,right:8,bottom: MediaQuery.of(context).viewInsets.bottom),
+                padding: EdgeInsets.only(
+                    left: 8.0,
+                    right: 8,
+                    bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: SingleChildScrollView(
                   child: Form(
                     key: formKey,
@@ -69,10 +75,10 @@ class _ContentButtonSheetState extends State<contentButtonSheet> {
                         const SizedBox(
                           height: 50,
                         ),
-                        BlocBuilder<AddNoteCubit,AddNoteState>(
-                          builder: ( context,  state) {
-                            return   CustomButton(
-                              isloading:state is AddNoteLoading ? true :false ,
+                        BlocBuilder<AddNoteCubit, AddNoteState>(
+                          builder: (context, state) {
+                            return CustomButton(
+                              isloading: state is AddNoteLoading ? true : false,
                               action: 'Add',
                               onTap: () {
                                 if (formKey.currentState!.validate()) {
@@ -91,7 +97,6 @@ class _ContentButtonSheetState extends State<contentButtonSheet> {
                               },
                             );
                           },
-
                         ),
                         const SizedBox(
                           height: 10,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:notes_app/cubits/notesCubit.dart';
 import 'package:notes_app/modal/NoteModal.dart';
 import 'package:notes_app/screens/notesEdit.dart';
 
@@ -41,6 +43,7 @@ final NoteModal notes;
               trailing: IconButton(
                 onPressed: () {
                   notes.delete();
+                  BlocProvider.of<NotesCubit>(context).getNote();
                 },
                 icon: const Icon(Icons.delete),
                 color: Colors.black,

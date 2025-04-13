@@ -9,3 +9,7 @@ class NotesFailed extends NotesState {
 }
 
 class NotesIni extends NotesState {}
+class NotesSuccess extends NotesState {
+
+
+}
