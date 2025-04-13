@@ -39,7 +39,9 @@ final NoteModal notes;
                         fontSize: 18, color: Colors.black.withOpacity(.5))),
               ),
               trailing: IconButton(
-                onPressed: () {},
+                onPressed: () {
+
+                },
                 icon: const Icon(Icons.delete),
                 color: Colors.black,
                 iconSize: 30,
