@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:notes_app/cubits/Add_notes_cubit.dart';
 import 'package:notes_app/modal/NoteModal.dart';
+import 'package:intl/intl.dart';
 
 import 'CustomButton.dart';
 import 'customTextField.dart';

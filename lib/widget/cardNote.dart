@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:notes_app/modal/NoteModal.dart';
 import 'package:notes_app/screens/notesEdit.dart';
 
 class cardNote extends StatelessWidget {
   const cardNote({
-    super.key,
+    super.key, required this.notes,
   });
-
+final NoteModal notes;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,22 +20,21 @@ class cardNote extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.only(top: 24,bottom: 24,left: 16),
         decoration: BoxDecoration(
-            color: const Color(0xffFFCC80),
+            color:  Color(notes.color),
             borderRadius: BorderRadius.circular(16)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title: const Text(
-                'Flutter tips',
-                style: TextStyle(fontSize: 30, color: Colors.black),
+              title:  Text(
+                notes.title,
+                style: const TextStyle(fontSize: 30, color: Colors.black),
               ),
 
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 16.0),
                 child: Text(
-                    'Build your '
-                        'career with tharwat samy',
+                    notes.subtitle,
                     style: TextStyle(
                         fontSize: 18, color: Colors.black.withOpacity(.5))),
               ),
@@ -48,7 +49,8 @@ class cardNote extends StatelessWidget {
               padding: const EdgeInsets.only(right: 16),
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 16),
-                child: Text(' May21 , 2025',
+                child: Text(  DateFormat('MMMM d').format(DateTime.parse(notes.date)),
+
                     style: TextStyle(fontSize: 16, color: Colors.black.withOpacity(.4))),
               ),
             )
