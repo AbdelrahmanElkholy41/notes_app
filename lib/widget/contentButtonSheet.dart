@@ -118,13 +118,25 @@ class _ContentButtonSheetState extends State<contentButtonSheet> {
 }
 
 class ColorItem extends StatelessWidget {
-  const ColorItem({super.key});
 
+  const ColorItem({super.key, required this.isActive, required this.colors});
+final bool isActive;
+final Color colors;
   @override
   Widget build(BuildContext context) {
-    return const CircleAvatar(
-      backgroundColor: Colors.blue,
+    return isActive ? CircleAvatar(
       radius: 30,
+      backgroundColor: Colors.white,
+      child: CircleAvatar(
+        radius: 28,
+        backgroundColor: colors,
+      ),
+    )
+   :  CircleAvatar(
+          backgroundColor: colors,
+          radius: 30,
     );
+
+
   }
 }
