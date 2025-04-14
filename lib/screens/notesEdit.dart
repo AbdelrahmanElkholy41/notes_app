@@ -5,6 +5,10 @@ import 'package:notes_app/widget/customAppBar.dart';
 import 'package:notes_app/widget/customTextField.dart';
 import 'package:notes_app/cubits/notesCubit.dart';
 
+import '../cubits/Add_notes_cubit.dart';
+import '../widget/contentButtonSheet.dart';
+import '../widget/editNoteColorsList.dart';
+
 
 class Notesedit extends StatefulWidget {
   const Notesedit({super.key, required this.note});
@@ -58,7 +62,11 @@ class _NoteseditState extends State<Notesedit> {
             },
             hintText: widget.note.subtitle,
             maxline: 5,
-          )
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+           EditNotesColorListView(note: widget.note,)
         ],
       ),
     ));
